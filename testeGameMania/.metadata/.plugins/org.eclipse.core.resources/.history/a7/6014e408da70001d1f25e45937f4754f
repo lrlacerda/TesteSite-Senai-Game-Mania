@@ -1,0 +1,59 @@
+package testeGameMania;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class testeLogin {
+	
+private WebDriver driver;
+	
+	
+	
+	@Before
+	public void ConfigurarTeste() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\chromedriver_win32\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+	}
+	
+	
+	
+	@Test
+	public void Testelogin() {
+		driver.get("http://localhost:4200/");
+		driver.findElement(By.xpath("/html/body/app-root/app-header/body/header/div/nav/ul/li[2]/a")).click();
+		driver.findElement(By.id("email")).sendKeys("lribeirol@email.com");
+		driver.findElement(By.id("senha")).sendKeys("senhalucas");
+		driver.findElement(By.className("botao-enviar")).click();
+		//------------------limpar-----------------
+		driver.findElement(By.id("email")).clear();
+		driver.findElement(By.id("senha")).clear();
+		//------------------teste2-----------------
+		driver.findElement(By.xpath("/html/body/app-root/app-header/body/header/div/nav/ul/li[2]/a")).click();
+		driver.findElement(By.id("email")).sendKeys("lribeirolacerda@gmail.com");
+		driver.findElement(By.id("senha")).sendKeys("senhaerro");
+		driver.findElement(By.className("botao-enviar")).click();
+		//------------------limpar-----------------
+		driver.findElement(By.id("email")).clear();
+		driver.findElement(By.id("senha")).clear();
+		//-----------------teste3------------------
+		driver.findElement(By.xpath("/html/body/app-root/app-header/body/header/div/nav/ul/li[2]/a")).click();
+		driver.findElement(By.id("email")).sendKeys("lribeirolacerda@gmail.com");
+		driver.findElement(By.id("senha")).sendKeys("senhalucas");
+		driver.findElement(By.className("botao-enviar")).click();
+		
+		
+	@After
+	public void FinalTesteLogin() {
+		
+	}
+	
+	
+}
+
+
